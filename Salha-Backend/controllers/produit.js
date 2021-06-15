@@ -43,23 +43,21 @@ if (Unit[0].length !==1)
   const storedUnit =Unit[0][0]; 
   const id_U=storedUnit.id_U;
 
-    const postResponse = await produit.post(req.body.nom_produit,req.body.image_produit,req.body.nb_min,id_U);
-    const error =new Error('produit enregistrer');
-    error.statusCode=401;
-    throw error;
-    
+    const postResponse = await produit.post(req.body.nom_produit,req.body.image_produit,req.body.nb_min,req.body.prix_P,id_U);
+   if(postResponse[0].insertId!=null){
+     res.status(200).json({'message':'produit ajoutée avec succées '})
+   }
+   
   }
     
 }catch (err) {
-    if (!err.statusCode) {
-      err.statusCode = 500;
-    }
+   console.log(err)
     next(err);
   }
   };
   exports.putproduit = async (req, res, next) => {
     try {
-      const putResponse = await produit.update(req.body.id_produit, req.body.nom_produit );
+      const putResponse = await produit.update(req.body.id_produit, req.body.nom_produit,req.body.image_produit,req.body.prix_P );
       res.status(200).json(putResponse);
     } catch (err) {
       if (!err.statusCode) {

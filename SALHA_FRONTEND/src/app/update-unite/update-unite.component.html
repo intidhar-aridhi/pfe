@@ -1,0 +1,20 @@
+<h3>Update Unite</h3>
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" id="nom_U" required [(ngModel)]="unite.nom_U" name="nom_U">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Image</label>
+      <input type="text" class="form-control" id="image_U" required [(ngModel)]="unite.image_U" name="image_U">
+    </div>
+
+ 
+   
+     
+
+    <button type="submit" class="btn btn-success">Modifier</button>
+  </form>
+</div>

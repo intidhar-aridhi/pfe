@@ -15,7 +15,21 @@ res.status(200).json(allfemmes);
 
     }
  
-};
+}; 
+exports.jibfemme = async(req, res, next) => {
+  try {
+  const [allfemmes] = await femme.femmeProd();
+  res.status(200).json(allfemmes);
+  
+  }catch(err) {
+      if(!err.statuscode){
+          err.statuscode = 500
+      }
+      next(err);
+  
+      }
+   
+  }; 
 exports.fetchfemme= async(req, res, next) => {
   try {
   const [unefemme] = await femme.fetchfemme(req.params.id);
@@ -87,8 +101,19 @@ exports.postfemme = async (req, res, next) => {
   };
   exports.putfemme = async (req, res, next) => {
     try {
-      const putResponse = await femme.update(req.body.id, req.body.nom ,req.body.prenom,req.body.numtel , req.body.cle,req.body.region);
-      res.status(200).json(putResponse);
+      const Gouv =await femme.getgouvernoratparleurnom(req.body.gouv);
+      if (Gouv[0].length !==1)
+      {  
+        const error =new Error('gouvernorat  n\'existe pas');
+        error.statusCode=401;
+        throw error;
+      }else {
+    
+        const storedGouv =Gouv[0][0]; 
+        const id_G=storedGouv.id_G;
+     
+      const putResponse = await femme.update(req.body.id, req.body.nom ,req.body.prenom,req.body.numtel ,req.body.region,id_G);
+      res.status(200).json(putResponse);}
     } catch (err) {
       if (!err.statusCode) {
         err.statusCode = 500;
@@ -108,3 +133,5 @@ exports.postfemme = async (req, res, next) => {
       next(err);
     }
   };
+
+   

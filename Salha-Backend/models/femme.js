@@ -31,12 +31,15 @@ module.exports = class Femme {
     }
 
 
+
     static getgouvernoratparleurnom(nom_G) {
         return db.execute ('SELECT * FROM gouvernorat WHERE nom_G =?' ,[nom_G]);
     }
 
    
-
+static femmeProd(){
+    return db.execute ('SELECT distinct femmes.* FROM femmes,production WHERE femmes.id=production.id' );
+}
 
 
     static fetchAll(){
@@ -44,8 +47,11 @@ module.exports = class Femme {
      
     }
     static fetchfemme(id){
-        return db.execute ('SELECT * FROM femmes WHERE id =?',[id]);
+        return db.execute ('SELECT femmes.id,femmes.nom,femmes.prenom,femmes.region,femmes.numtel,femmes.cle ,gouvernorat.nom_G As gouv FROM femmes JOIN gouvernorat ON femmes.id_G = gouvernorat.id_G  WHERE id =?',[id]);
+
+    
     }
+   
      static getCle()
      {
          return db.execute('SELECT max(id) FROM femmes ');
@@ -56,13 +62,15 @@ module.exports = class Femme {
     static postC(cle,id){
         return db.execute('UPDATE femmes SET cle= ?  WHERE id = ?', [cle,id]);
     }
-    static update(id, nom,prenom,numtel,cle,region) {
-        return db.execute('UPDATE femmes SET nom = ?, prenom= ? ,numtel= ? , cle= ? , region= ?  WHERE id = ?', [nom,prenom,numtel,cle,region,id]);
+    static update(id, nom,prenom,numtel,region,id_G) {
+        return db.execute('UPDATE femmes SET nom = ?, prenom= ? ,numtel= ?  , region= ?, id_G=?  WHERE id = ?', [nom,prenom,numtel,region,id_G,id]);
       }
     
       static delete(id) {
         return db.execute('DELETE FROM femmes WHERE id = ?', [id]);
       }
+  
+  
       
   
 };

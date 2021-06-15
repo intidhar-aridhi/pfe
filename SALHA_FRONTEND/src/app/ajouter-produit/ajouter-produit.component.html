@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <router-outlet></router-outlet>
+  <h3 style="color: #2E8B57; width: 500px; height: 40px; margin-top: 20px; ">Ajouter produit</h3>
+<div  style="width: 400px;">
+  <div style="width: 20px;height: 20px; "> <img src="assets/assets/img/produit.PNG"alt="fghjkjhgh" style="width: 700px; margin-left: 600px; margin-bottom: 700px;  "> </div>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input style="width: 500px; height: 50px; " type="text" class="form-control" id="nom_produit" #nom_produit="ngModel" [(ngModel)]="produit.nom_produit" name="nom_produit"  required  >
+   
+  
+    </div>
+
+    <div class="form-group">
+      <label for="name">Image</label>
+      <input style="width: 500px; height: 50px; " type="text" class="form-control"  #image_produit="ngModel" id="image_produit" [(ngModel)]="produit.image_produit" name="image_produit"  required >
+      
+    </div>
+
+    <div class="form-group">
+      <label for="name">NbMin</label>
+      <input style="width: 500px; height: 50px; " type="text" class="form-control" #nb_min="ngModel" id="nb_min" [(ngModel)]="produit.nb_min" name="nb_min"    required >
+     
+    </div>
+    <div class="form-group">
+      <label for="name">Prix</label>
+      <input style="width: 500px; height: 50px; " type="text" class="form-control" #prix_P="ngModel" id="prix_P" [(ngModel)]="produit.prix_P" name="prix_P"    required >
+     
+    </div>
+   
+    <br>
+     
+      <div class="form-group">
+        <select style="width: 500px; height: 50px; "  #unit="ngModel"  id="unit" [(ngModel)]="produit.unit" name="unit" >
+          
+          <option *ngFor="let unite of unites | async" [value]="unite.nom_U " class="form-control" >{{ unite.nom_U }}
+          
+          </option>
+          
+        </select>
+      
+      </div>
+     
+  
+      
+     <br>
+
+    <button style="width: 500px; height: 50px; background-color: burlywood; color: black; border-radius: 20px;" type="submit" class="btn btn-success" [disabled]="userForm.invalid">Ajouter</button>
+  </form>
+</div>
+
+<br>
+<button  style="width: 500px; height: 50px; background-color: darkgreen; color: black; border-radius: 20px;" type="submit" class="btn btn-success" (click)="toogleTag()">Autre unite</button>
+<form *ngIf="showMe" #userForm="ngForm" (ngSubmit)="onSubmitunite()" >
+ 
+      <div class="form-group">
+        <label for="name">Nom unite</label><br>
+        <input style="width: 500px; height: 50px; " type="text" class="form-control"   id="nom" #nom="ngModel" [(ngModel)]="unite.nom_U" name="nom_U" required >
+     
+     
+  
+      </div>
+  
+      <div class="form-group">
+        <label for="name">image unite</label><br>
+        <input style="width: 500px; height: 50px; " type="text" class="form-control"  #image="ngModel" id="image" [(ngModel)]="unite.image_U" name="image_U" required  >
+       
+      </div>
+      <br>
+      <button type="submit" class="btn btn-success" style="background-color:cornflowerblue">Ajouter</button>
+      <button (click)="showMe=false" class="btn btn-danger" style="background-color: crimson;">Anuuler</button>
+
+  </form>
+</body>
+</html>

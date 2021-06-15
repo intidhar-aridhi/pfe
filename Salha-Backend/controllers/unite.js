@@ -14,7 +14,8 @@ exports.postunite= async(req,res,next)=>{
 
  
 const result =await unite.post(nom_U,image_U);
-res.status(201).json({message:'unite enregistrer'})
+console.log('+++++++++++++++++++++++++ res post unite ',result[0].insertId)
+res.status(201).json({message:'unite enregistrer',id: result[0].insertId})
 }catch(err){
   if(!err.statusCode){
     err.statusCode=500;

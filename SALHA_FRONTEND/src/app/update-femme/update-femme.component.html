@@ -1,0 +1,40 @@
+<h3 style="color:peru; width: 500px; height: 40px; margin-top: 20px; ">Modifier Femme</h3>
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div style="width: 20px;height: 20px; "> <img src="assets/assets/img/femme.jpg"alt="fghjkjhgh" style="width: 600px; margin-left: 600px; margin-bottom: 700px;  "> </div>
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input style="width: 500px; height: 50px;  "type="text" class="form-control" id="nom" required [(ngModel)]="femme.nom" name="nom">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Prenom</label>
+      <input style="width: 500px; height: 50px;  "type="text" class="form-control" id="prenom" required [(ngModel)]="femme.prenom" name="prenom">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Adresse</label>
+      <input style="width: 500px; height: 50px;  "type="text" class="form-control" id="region" required [(ngModel)]="femme.region" name="region">
+    </div>
+   
+    <div class="form-group">
+        <label for="name">Numtel</label>
+        <input style="width: 500px; height: 50px;  "type="text" class="form-control" id="numtel" required [(ngModel)]="femme.numtel" name="numtel">
+      </div>
+ <br>
+       
+      <div class="form-group">
+        <select style="width: 500px; height: 50px; " id="gouv" [(ngModel)]="femme.gouv" name="gouv" >
+       <option>{{femme.gouv}}</option>
+     
+          <option *ngFor="let gouvernorat of gouvernorats | async"  class="form-control"  > {{ gouvernorat.nom_G }}</option>
+        
+   
+        </select>
+      
+      </div>
+     
+      <br>
+    <button type="submit" class="btn btn-success" style="width: 500px; height: 50px; background-color: burlywood; color: black; border-radius: 20px;">Modifier</button>
+  </form>
+</div>

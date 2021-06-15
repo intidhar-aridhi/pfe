@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <router-outlet></router-outlet>
+<h1 style="color: #2E8B57; width: 900px;  height: 40px; margin-top: 50px; ">Ajouter nouvelle  Femme</h1>
+
+<div style="width: 400px;">
+  <div style="width: 20px;height: 20px; "> <img src="assets/assets/img/femme.jpg"alt="fghjkjhgh"  style="width: 700px; margin-left: 600px; margin-bottom: 700px; margin-top: -100px;  " > </div>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input  style="width: 500px; height: 50px;  " type="text" class="form-control" id="nom" #nom="ngModel" [(ngModel)]="femme.nom" name="nom"  required pattern="^[a-zA-Z]+$" minlength="4" maxlength="15" >
+   <span style="color: brown;" *ngIf="nom.invalid && nom.touched">invalid nom</span>
+   
+
+    </div>
+<br>
+    <div class="form-group">
+      <label for="name" >Prenom</label>
+      <input  style="width: 500px; height: 50px; " type="text" class="form-control"  #prenom="ngModel" id="prenom" [(ngModel)]="femme.prenom" name="prenom"  required  pattern="^[a-zA-Z]+$" minlength="4" maxlength="15">
+      <span style="color: brown;" *ngIf="prenom.invalid && prenom.touched">invalide prenom</span>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="name">Adresse</label>
+      <input  style="width: 500px; height: 50px; " type="text" class="form-control" #adresse="ngModel" id="region" [(ngModel)]="femme.region" name="region"    required minlength="4" maxlength="15">
+      <span style="color: brown;" *ngIf="adresse.invalid && adresse.touched">invalide adresse</span>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="name">Numtel</label>
+        <input style="width: 500px; height: 50px; "type="tel" class="form-control" #numtel="ngModel" id="numtel"  [(ngModel)]="femme.numtel" name="numtel"    required pattern="[0-9]+$" minlength="8" maxlength="8">
+        <span style="color: brown;" *ngIf="numtel.invalid && numtel.touched">invalide telephone</span>
+      </div>
+      <br>
+    
+    
+     
+      <div class="form-group">
+      
+        <select style="width: 500px; height: 50px; " #gouv="ngModel"  id="gouv" [(ngModel)]="femme.gouv" name="gouv"  >
+          <option *ngFor="let gouvernorat of gouvernorats | async"  class="form-control"  >{{ gouvernorat.nom_G }}</option>
+          
+        </select>
+      
+      </div>
+     
+  <br>
+      
+     
+
+    <button style="width: 500px; height: 50px; background-color: burlywood; color: black; border-radius: 20px;" type="submit" class="btn btn-success" [disabled]="userForm.invalid">Ajouter</button>
+  
+  </form>
+
+</div>
+
+
+<div [hidden]="!submitted">
+  <h4>Ajouter avec succes !</h4>
+  
+</div>
+</body>
+</html>

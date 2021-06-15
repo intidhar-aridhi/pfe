@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <router-outlet></router-outlet>
+<h3>Ajouter unite</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" id="nom" #nom="ngModel" [(ngModel)]="unite.nom_U" name="nom_U"  required>
+   <span style="color: brown;" *ngIf="nom.invalid && nom.touched">invalid nom</span>
+   
+
+    </div>
+
+    <div class="form-group">
+      <label for="name">Image</label>
+      <input type="text" class="form-control"  #prenom="ngModel" id="prenom" [(ngModel)]="unite.image_U" name="image_U"  required  >
+      <span style="color: brown;" *ngIf="prenom.invalid && prenom.touched">invalide prenom</span>
+    </div>
+
+     
+     
+  
+      
+     
+
+    <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">Ajouter</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>Ajouter avec succes !</h4>
+  
+</div>
+</body>
+</html>
+

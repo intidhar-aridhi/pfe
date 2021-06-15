@@ -1,0 +1,25 @@
+
+
+<hr/>
+<div *ngIf="coursier">
+  <div>
+    <label><b>Nom: </b></label> {{coursier.nom}}
+  </div>
+  <div>
+    <label><b>Prenom: </b></label> {{coursier.prenom}}
+  </div>
+  <div>
+    <label><b>Numtel: </b></label> {{coursier.numtel}}
+  </div>  
+  <div>
+    <label><b>Email: </b></label> {{coursier.email}}
+  </div> 
+  <div>
+    <label><b>Password: </b></label> {{coursier.password}}
+  </div> 
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Retour</button><br>
+

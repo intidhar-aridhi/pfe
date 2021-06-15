@@ -1,0 +1,25 @@
+
+
+<hr/>
+<div *ngIf="femme">
+  <div>
+    <label><b>Nom: </b></label> {{femme.nom}}
+  </div>
+  <div>
+    <label><b>Prenom: </b></label> {{femme.prenom}}
+  </div>
+  <div>
+    <label><b>Region: </b></label> {{femme.region}}
+  </div>  
+  <div>
+    <label><b>NumTel: </b></label> {{femme.numtel}}
+  </div> 
+  <div>
+    <label><b>Cle: </b></label> {{femme.cle}}
+  </div> 
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Retour</button><br>
+
