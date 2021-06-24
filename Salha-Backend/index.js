@@ -8,6 +8,7 @@ const ProduitRoutes = require('./routes/produit');
 const coursierRoutes = require('./routes/coursier');
 const uniteeRoutess = require ('./routes/unite');
 const productionRoutes = require('./routes/productionRoute');
+const alimentationRoutes = require ('./routes/alimentation');
 
 
 const errorController = require('./controllers/error');
@@ -24,12 +25,13 @@ res.setHeader('Access-Control-Allow-Methods', 'GET, POST ,PUT , DELETE');
 res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization');
 next();
 });
-app.use('/unites',uniteeRoutess);
+app.use('/unite',uniteeRoutess);
 app.use('/coursiers',coursierRoutes);
-app.use('/gouvernorats',GouvernoratRoutes);
+app.use('/gouvernorat',GouvernoratRoutes);
 app.use('/femmes',femmeRoutes);
-app.use('/Produits',ProduitRoutes);
-app.use('/production',productionRoutes);
+app.use('/Produit',ProduitRoutes);
+app.use('/prod',productionRoutes);
+app.use('/alimentation',alimentationRoutes);
 
 app.use(errorController.get404);
 

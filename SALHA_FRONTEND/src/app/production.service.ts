@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class ProductionService {
   public baseUrl = 'http://localhost:3000/femmes/femmeprod';
-  public urlproduction = 'http://localhost:3000/production/getprodbyidf';
-  public urlproduit = 'http://localhost:3000/production/getproduitbyidp';
-  public urldonnesprod = 'http://localhost:3000/production';
+  public urlproduction = 'http://localhost:3000/prod/getprodbyidf';
+  public urlproduit = 'http://localhost:3000/prod/getproduitbyidp';
+  public urldonnesprod = 'http://localhost:3000/prod';
   constructor(private http : HttpClient) { }
   getListProductiondesfemmes():Observable<any>{
     return this.http.get(`${this.baseUrl}`);

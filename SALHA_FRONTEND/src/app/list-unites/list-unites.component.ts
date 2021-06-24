@@ -3,7 +3,7 @@ import { from, Observable } from 'rxjs';
 import { Unite } from '../unite';
 import { UniteService } from '../unite.service';
 import { Router } from '@angular/router';
-
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-list-unites',
   templateUrl: './list-unites.component.html',
@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class ListUnitesComponent implements OnInit {
   unites:Observable<Unite[]>;
-  constructor(public uniteService:UniteService,private router:Router) { }
+  closeResult: string;
+  constructor(public uniteService:UniteService,private router:Router,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.reloadData();
@@ -32,6 +33,24 @@ export class ListUnitesComponent implements OnInit {
 
   updateunite(id_U: number){
     this.router.navigate(['updateunite', id_U]);
+  }
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+      
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 

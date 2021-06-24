@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 })
 export class ProduitService {
 
-  public baseUrl = 'http://localhost:3000/produits';
+  public baseUrl = 'http://localhost:3000/produit';
   constructor(private http : HttpClient) { }
     
   getproduit(id: number) :Observable<any>{

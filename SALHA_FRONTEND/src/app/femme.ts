@@ -7,6 +7,7 @@ export class Femme {
     region:string;
     numtel:string;
     cle:string;
+    image_F: string;
     gouv:String;
    
 }

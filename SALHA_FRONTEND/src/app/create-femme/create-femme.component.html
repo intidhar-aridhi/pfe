@@ -38,6 +38,12 @@
         <span style="color: brown;" *ngIf="numtel.invalid && numtel.touched">invalide telephone</span>
       </div>
       <br>
+      <div class="form-group">
+        <label for="name">Image</label>
+        <input style="width: 500px; height: 50px; "type="text" class="form-control" #image_F="ngModel" image_F="numtel"  [(ngModel)]="femme.image_F" name="image_F"    required >
+        <span style="color: brown;" *ngIf="image_F.invalid && image_F.touched">invalide </span>
+      </div>
+      <br>
     
     
      

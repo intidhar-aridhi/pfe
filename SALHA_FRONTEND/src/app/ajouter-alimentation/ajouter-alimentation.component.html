@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <router-outlet></router-outlet>
+  <h1 style="color: #2E8B57; width: 500px; height: 40px; margin-top: 20px; ">Ajouter alimentation</h1>
+<div  style="width: 400px;">
+  <div style="width: 20px;height: 40px; "> </div>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input style="width: 500px; height: 50px; " type="text" class="form-control" id="nom_A" #nom_A="ngModel" [(ngModel)]="alimentation.nom_A" name="nom_A"  required  >
+   
+  
+    </div>
+
+ 
+
+    <div class="form-group">
+      <label for="name">NbMin</label>
+      <input style="width: 500px; height: 50px; " type="text" class="form-control" #nb_min="ngModel" id="nb_min" [(ngModel)]="alimentation.nb_min" name="nb_min"    required >
+     
+    </div>
+    <div class="form-group">
+      <label for="name">Unite</label>
+      <input style="width: 500px; height: 50px; " type="text" class="form-control" #unite_al="ngModel" id="unite_al" [(ngModel)]="alimentation.unite_al" name="unite_al"    required >
+     
+    </div>
+   
+    <br>
+     
+   
+      <div class="form-group">
+        <label for="name">Image</label>
+        <br>
+        <input  style="width: 500px; height: 50px; " type="text" class="form-control"  #image_A="ngModel" id="image_A" [(ngModel)]="alimentation.image_A" name="image_A"  required >
+        
+      </div>
+     
+  
+      
+     <br>
+
+    <button style="width: 500px; height: 50px; background-color: burlywood; color: black; border-radius: 20px;" type="submit" class="btn btn-success" [disabled]="userForm.invalid">Ajouter</button>
+  </form>
+</div>
+
+<br>
+
+  
+</body>
+</html>

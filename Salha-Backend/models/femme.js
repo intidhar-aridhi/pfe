@@ -11,7 +11,7 @@ module.exports = class Femme {
         this.prenom = this.prenom;
         this.numtel = this.numtel;
         this.cle = this.cle;
-        this.region = this.region;
+        this.adresse = this.adresse;
       
         
         
@@ -47,7 +47,7 @@ static femmeProd(){
      
     }
     static fetchfemme(id){
-        return db.execute ('SELECT femmes.id,femmes.nom,femmes.prenom,femmes.region,femmes.numtel,femmes.cle ,gouvernorat.nom_G As gouv FROM femmes JOIN gouvernorat ON femmes.id_G = gouvernorat.id_G  WHERE id =?',[id]);
+        return db.execute ('SELECT femmes.id,femmes.nom,femmes.prenom,femmes.adresse,femmes.numtel,femmes.cle ,gouvernorat.nom_G As gouv FROM femmes JOIN gouvernorat ON femmes.id_G = gouvernorat.id_G  WHERE id =?',[id]);
 
     
     }
@@ -56,14 +56,14 @@ static femmeProd(){
      {
          return db.execute('SELECT max(id) FROM femmes ');
      }
-    static post(nom,prenom,numtel,region,id_G){
-        return db.execute('INSERT INTO femmes (nom,prenom,numtel,region,id_G) VALUES (?,?,?,?,?)',[nom,prenom,numtel,region,id_G]);
+    static post(nom,prenom,numtel,adresse,id_G,image_F){
+        return db.execute('INSERT INTO femmes (nom,prenom,numtel,adresse,id_G,image_F) VALUES (?,?,?,?,?,?)',[nom,prenom,numtel,adresse,id_G,image_F]);
     }
     static postC(cle,id){
         return db.execute('UPDATE femmes SET cle= ?  WHERE id = ?', [cle,id]);
     }
-    static update(id, nom,prenom,numtel,region,id_G) {
-        return db.execute('UPDATE femmes SET nom = ?, prenom= ? ,numtel= ?  , region= ?, id_G=?  WHERE id = ?', [nom,prenom,numtel,region,id_G,id]);
+    static update(id, nom,prenom,numtel,adresse,id_G) {
+        return db.execute('UPDATE femmes SET nom = ?, prenom= ? ,numtel= ?  , adresse= ?, id_G=?  WHERE id = ?', [nom,prenom,numtel,adresse,id_G,id]);
       }
     
       static delete(id) {

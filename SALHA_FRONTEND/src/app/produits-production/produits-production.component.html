@@ -8399,31 +8399,17 @@ border: transparent; }
 
 	  <!-- Page Content  -->
 	<div id="content" style="background-color: #F5F5F5" class="p-4 p-md-5 pt-5">
-        <div *ngIf = "production"><span style="size: 100px; color: teal;">Date production: </span>
-            {{production.date_transaction.slice(0,19)}}
+    <div *ngIf = "production"><span style="size: 100px; color: teal;">Quantite: </span>
+      {{produit.quantite}}
+  </div>
+  <div *ngIf = "production"><span style="size: 100px; color: teal;">Nom: </span>
+    {{produit.nom_produit}}
+</div>
+        <div *ngIf = "production"><span style="size: 100px; color: teal;">Unite: </span>
+            {{produit.unite}}
         </div>
-        <div *ngIf = "production"><span style="size: 100px; color: teal;">Somme production: </span>
-            {{production.somme_prix}}dt
+        <div *ngIf = "production"><span style="size: 100px; color: teal;">Somme: </span>
+            {{produit.somme}}dt
         </div>
-	  <table class="table table-striped table-hover table-bordered">
-		  <thead>
-			  <tr>
-				 
-				  <th style="width: 200px;"> Quantite</th>
-				  <th style="width: 150px;">Unite</th>
-				  <th style="width: 130px;">Type produit</th>
-                  <th style="width: 130px;">Somme</th>
-			  </tr>
-		  </thead>
-					    <tbody>
-      <tr  *ngFor=" let prod of produit" >
-          
-          <td> {{prod.quantite}}</td>
-          <td>{{prod.unite}} </td>
-          <td>{{ prod.nom_produit}}</td>
-          <td>{{ prod.somme}}dt </td>
-        </tr>
-  
-      </tbody>
-	</table>
+	
 

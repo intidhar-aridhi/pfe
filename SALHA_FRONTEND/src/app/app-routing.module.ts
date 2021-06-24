@@ -22,7 +22,9 @@ import {  ListDeclarationProductionComponent } from './list-declaration-producti
 import { ModifierProduitComponent } from './modifier-produit/modifier-produit.component';
 import { ProductionFemmeComponent } from './production-femme/production-femme.component';
 import { ProduitsProductionComponent } from './produits-production/produits-production.component';
-
+import { ListAlimentationComponent } from './list-alimentation/list-alimentation.component';
+import { ModifierAlimentationComponent } from './modifier-alimentation/modifier-alimentation.component';
+import { AjouterAlimentationComponent } from './ajouter-alimentation/ajouter-alimentation.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -47,6 +49,9 @@ const routes: Routes = [
   { path : 'modifierproduit/:id' , component: ModifierProduitComponent },
   { path : 'listdesfemmesayantproduction/:id' , component:ProductionFemmeComponent },
   { path : 'produitsproduction/:id' , component:ProduitsProductionComponent},
+  { path : 'alimentations', component: ListAlimentationComponent},
+  { path : 'modifieralimentation/:id', component: ModifierAlimentationComponent},
+  { path : 'alimentations/ajouteralimentation',component: AjouterAlimentationComponent},
 
 
 

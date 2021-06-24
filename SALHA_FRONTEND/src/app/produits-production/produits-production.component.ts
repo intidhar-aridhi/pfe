@@ -13,7 +13,7 @@ export class ProduitsProductionComponent implements OnInit {
   id: number;
 idp:number;
 production:Production;
-  produit:Produit[];
+  produit:Produit;
   constructor( private route: ActivatedRoute,private router: Router,
     private productionservice: ProductionService ) { }
 
@@ -26,18 +26,14 @@ production:Production;
         this.produit =data;
 
      console.log("prod" , this.produit);
-   
+     this.produit = data[0];
   
       
        
         
       }, error => console.log(error));
-    this.productionservice.getdonnesprod(this.id)
-    .subscribe((data) =>{
-    this.production=data[0];
-    console.log("ghjhgf",this.production);
-  }, error => console.log(error)
-  );
+
+ 
 
   }
 

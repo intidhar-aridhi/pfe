@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GouvernoratService {
-  public baseUrl = 'http://localhost:3000/gouvernorats';
+  public baseUrl = 'http://localhost:3000/gouvernorat';
 
   constructor( private http : HttpClient) { }
   getgouvernorat(id: number) :Observable<any>{

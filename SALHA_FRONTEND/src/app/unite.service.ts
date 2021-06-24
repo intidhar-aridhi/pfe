@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UniteService {
-  public baseUrl = 'http://localhost:3000/unites';
+  public baseUrl = 'http://localhost:3000/unite';
   constructor(private http : HttpClient) { }
   getunite(id: number) :Observable<any>{
     return this.http.get(`${this.baseUrl}/${id}`);

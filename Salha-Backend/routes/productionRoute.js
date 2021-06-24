@@ -7,6 +7,4 @@ router.get('/getProd',productionController.getP);
 router.get('/getprodbyidf/:id',productionController.getpf);
 router.get('/getproduitbyidp/:id_production',productionController.getproduitp)
 router.get('/:id',productionController.fetchproductionparleurid);
-
-//router.get('/listeproduction',productionController.getListeProd);
-   module.exports = router;
+module.exports = router;

@@ -8367,26 +8367,25 @@ a[data-toggle="collapse"] {
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Femmes</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
-                    <a  routerLink="" class="nav-link" routerLinkActive="active">Gestion des femmes</a>
+                    <a  routerLink="/femmes" class="nav-link" routerLinkActive="active" >Gestion des femmes</a>
                 </li>
                 <li>
-                    <a  routerLink="" class="nav-link" routerLinkActive="active">Production des femmes </a>
+                    <a  routerLink="/listdesfemmesayantproduction" class="nav-link" routerLinkActive="active">Production des femmes </a>
                 </li>
               
               </ul>
 	          </li>
-			  <li>
-				<a routerLink="" class="nav-link" routerLinkActive="active">Coursiers</a>
-				</li>
-	          <li>
-              <a routerLink="" class="nav-link" routerLinkActive="active">Produits</a>
-	          </li>
-	          <li>
-              <a routerLink="" class="nav-link" routerLinkActive="active">Unites </a>
-	          </li>
-			  <li>
-				<a routerLink="" class="nav-link" routerLinkActive="active">Gouvernorats</a>
-				</li>
+            <li>
+              <a href="#" class="list-group-item list-group-item-action bg-light" routerLink="/gouvernorats" class="nav-link" routerLinkActive="active">Gouvernorats</a>
+            </li>
+            <li> 
+              <a href="#" class="list-group-item list-group-item-action bg-light"  routerLink="/coursiers" class="nav-link" routerLinkActive="active">Coursiers</a>
+            </li>
+               
+          
+            <li><a href="#" class="list-group-item list-group-item-action bg-light"  routerLink="/produits" class="nav-link" routerLinkActive="active">Produits</a></li>
+            <li><a href="#" class="list-group-item list-group-item-action bg-light"  routerLink="/unites" class="nav-link" routerLinkActive="active">Unites</a></li>
+            <li><a href="#" class="list-group-item list-group-item-action bg-light"  routerLink="/alimentations"  class="nav-link" routerLinkActive="active">Alimentations</a></li>
 
 	        </ul>
 
@@ -8397,43 +8396,91 @@ a[data-toggle="collapse"] {
 	      </div>
     	</nav>
 
+
         <!-- Page Content  -->
       <div id="content" style="background-color: #F5F5F5" class="p-4 p-md-5 pt-5">
+        <nav class="navbar navbar-expand " style="background-color: #F5F5F5; color: #F5F5F5;">
+          <ul class="navbar-nav" >
+            <li class="nav-item">
+              <select style="border-radius: 20px; width: 230px;height: 45px; margin-left: 550px;margin-right:10px" name="pets" id="pet-select">
+                <option value="">--Selectionner gouvernorat--</option>
+                <option value="dog">Jendouba</option>
+                <option value="cat">Beja</option>
+                <option value="hamster">Sidi bouzid</option>
+                
+            </select>
+            </li>
+            <li class="nav-item">
+              <button style="width: 170px;border-radius: 20px;background-color: grey; color: black; border:none;" routerLink="ajouterproduit" class="nav-link" routerLinkActive="active" >+ Ajouter produit </button>
+            </li>
+           
+          </ul>
+        </nav>
+              
+        
+     
+   
 
-        <h2 ><button style="border-radius: 20px; color: black; background-color:#A9A9A9;margin-bottom: 30px; height: 60px; "  routerLink="ajouterproduit" class="nav-link" routerLinkActive="active" >+ ajouter produit </button></h2>
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
-                    <th style="width: 20px;"></th>
-                    <th style="width: 100px;">Nom </th>
-                    <th style="width: 100px;">NbMin</th>
-                                      
-                    
-                    <th>Action</th>
+                   
+                    <th style="width: 150px;">Nom et Prenom </th>
+                    <th style="width: 130px;">Address</th>
+                    <th style="width: 130px;">NumTel</th>
+                    <th style="width: 130px;">Cle</th>
+                  
+                    <th style="width: 230px;">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr style="background-color: white;" *ngFor="let produit of produits | async">
+                    
+                    <td>{{produit.nom_produit}}</td>
                     <td>{{produit.image_produit}}</td>
-                    <td > {{produit.nom_produit}}</td>
-                    <td >{{produit.nb_min}}</td>
+                    <td>{{produit.nb_min}}</td>
+                    <td>{{produit.prix_P}}</td>
                     
                     <td style="width: 150px;">
-                        <button (click)="produitDetails(produit.id_produit)" style="background-color: 	#B0E0E6; border-radius: 20px; color: black;" >Detaille</button>
-                        <button (click)="updateproduit(produit.id_produit)" style="background-color:#FFD700; margin-left: 10px; border-radius: 20px; color: black;">Modifier</button>
-                        <button (click)="deleteproduit(produit.id_produit)" style="background-color:red; margin-left: 10px; border-radius: 20px; color: black;">Supprimer</button>
+                        <button (click)="produitDetails(produit.id_produit)" style="background-color: #1E90FF; border-radius: 20px; color: black; border: none;" >Detaille</button>
+                        <button (click)="updateproduit(produit.id_produit)" style="background-color:#ffc107; margin-left: 10px; border-radius: 20px; color: black; border: none;">Modifier</button>
+                        <button  (click)="open(content)" style="background-color: #e50000; margin-left: 10px; border-radius: 20px; color: black; border: none;">Supprimer</button>
                     </td>
+                    
+                    
+                      <ng-template #content let-modal>
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="modal-basic-title">Supprimer produit </h4>
+                          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <label for="firstname">Vous etes sur de supprimer ce produit ?</label>
+                              <div class="input-group">
+                                <input id="firstname" class="form-control" >
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-dark" (click)="deleteproduit(produit.id_produit)" (click)="modal.close('Save click')">Supprimer</button>
+                          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Annuler</button>
+                        </div>
+                      </ng-template>
+                 
                 </tr>
+               
+              
               
                     
             </tbody>
         </table>
       </div>
 		</div>
+  
 
   </body>
 </html>
-
-
-
-

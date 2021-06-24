@@ -16,7 +16,7 @@ res.status(200).json(allfemmes);
     }
  
 }; 
-exports.jibfemme = async(req, res, next) => {
+exports.femmeayantproduction = async(req, res, next) => {
   try {
   const [allfemmes] = await femme.femmeProd();
   res.status(200).json(allfemmes);
@@ -76,7 +76,7 @@ exports.postfemme = async (req, res, next) => {
     const storedGouv =Gouv[0][0]; 
     const id_G=storedGouv.id_G;
  
-      const postResponse = await femme.post(req.body.nom,req.body.prenom,req.body.numtel,req.body.region,id_G);
+      const postResponse = await femme.post(req.body.nom,req.body.prenom,req.body.numtel,req.body.adresse,id_G,req.body.image_F);
       let id_Max= await femme.getCle();
       id_Max=id_Max[0][0]['max(id)'];
       

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,11 @@ import { ListDeclarationProductionComponent } from './list-declaration-productio
 import { ProductionFemmeComponent } from './production-femme/production-femme.component';
 import { ProduitsProductionComponent } from './produits-production/produits-production.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListAlimentationComponent } from './list-alimentation/list-alimentation.component';
+import { AjouterAlimentationComponent } from './ajouter-alimentation/ajouter-alimentation.component';
+import { ModifierAlimentationComponent } from './modifier-alimentation/modifier-alimentation.component';
+import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 
 
 
@@ -59,6 +64,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     ProductionFemmeComponent,
     ProduitsProductionComponent,
     SidebarComponent,
+    ListAlimentationComponent,
+    AjouterAlimentationComponent,
+    ModifierAlimentationComponent,
+    FileUploaderComponent,
  
     
   
@@ -69,9 +78,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+ 
 })
 export class AppModule { }

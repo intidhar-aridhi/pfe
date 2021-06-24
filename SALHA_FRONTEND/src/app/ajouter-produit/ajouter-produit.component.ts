@@ -56,7 +56,7 @@ export class AjouterProduitComponent implements OnInit {
     (this.produit).subscribe((res : any) => {
       console.log('res',res.data)
       this.produit = new Produit();
-      this.router.navigate(['/produits/ajouterproduit']);
+      this.router.navigate(['/produits']);
     }, 
     error => console.log(error));
   }

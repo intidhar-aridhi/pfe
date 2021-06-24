@@ -3,7 +3,7 @@ const femmeController = require('../controllers/femme');
 const router = express.Router();
 
 router.post('/',femmeController.postfemme);
-router.get('/femmeprod',femmeController.jibfemme);
+router.get('/femmeprod',femmeController.femmeayantproduction);
 router.put('/', femmeController.putfemme);
 router.get('/:id',femmeController.fetchfemme);
 //router.get('/:id',femmeController.fetchidgouvmelfemme);

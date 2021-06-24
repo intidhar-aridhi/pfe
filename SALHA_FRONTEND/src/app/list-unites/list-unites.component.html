@@ -8355,7 +8355,7 @@ a[data-toggle="collapse"] {
 	        </button>
         </div>
 				<div class="p-4 pt-5">
-		  		<h1><a href="index.html" class="logo">Salha</a></h1>
+          <h1><a href="index.html" class="logo">Salha</a></h1>
 	        <ul class="list-unstyled components mb-5">
 	          <li class="active">
 	            <a  routerLink="" class="nav-link" routerLinkActive="active">Accueil</a>
@@ -8367,26 +8367,25 @@ a[data-toggle="collapse"] {
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Femmes</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
-                    <a  routerLink="" class="nav-link" routerLinkActive="active">Gestion des femmes</a>
+                    <a  routerLink="/femmes" class="nav-link" routerLinkActive="active" >Gestion des femmes</a>
                 </li>
                 <li>
-                    <a  routerLink="" class="nav-link" routerLinkActive="active">Production femmes </a>
+                    <a  routerLink="/listdesfemmesayantproduction" class="nav-link" routerLinkActive="active">Production des femmes </a>
                 </li>
               
               </ul>
 	          </li>
-			  <li>
-				<a routerLink="" class="nav-link" routerLinkActive="active">Gestion des coursiers</a>
-				</li>
-	          <li>
-              <a routerLink="" class="nav-link" routerLinkActive="active">Gestion de Produit</a>
-	          </li>
-	          <li>
-              <a routerLink="" class="nav-link" routerLinkActive="active">Gestion des unites </a>
-	          </li>
-			  <li>
-				<a routerLink="" class="nav-link" routerLinkActive="active">Gestion des gouvernorats </a>
-				</li>
+            <li>
+              <a href="#" class="list-group-item list-group-item-action bg-light" routerLink="/gouvernorats" class="nav-link" routerLinkActive="active">Gouvernorats</a>
+            </li>
+            <li> 
+              <a href="#" class="list-group-item list-group-item-action bg-light"  routerLink="/coursiers" class="nav-link" routerLinkActive="active">Coursiers</a>
+            </li>
+               
+          
+            <li><a href="#" class="list-group-item list-group-item-action bg-light"  routerLink="/produits" class="nav-link" routerLinkActive="active">Produits</a></li>
+            <li><a href="#" class="list-group-item list-group-item-action bg-light"  routerLink="/unites" class="nav-link" routerLinkActive="active">Unites</a></li>
+            <li><a href="#" class="list-group-item list-group-item-action bg-light"  routerLink="/alimentations"  class="nav-link" routerLinkActive="active">Alimentations</a></li>
 
 	        </ul>
 
@@ -8396,6 +8395,7 @@ a[data-toggle="collapse"] {
 
 	      </div>
     	</nav>
+
 
         <!-- Page Content  -->
       <div id="content" style="background-color: #F5F5F5" class="p-4 p-md-5 pt-5">
@@ -8419,8 +8419,30 @@ a[data-toggle="collapse"] {
                     <td style="width: 150px;">
                        
                         <button (click)="updateunite(unite.id_U)" style="background-color:#FFD700; margin-left: 10px; border-radius: 20px; color: black;">Modifier</button>
-                        <button (click)="deleteunite(unite.id_U)"style="background-color:red; margin-left: 10px; border-radius: 20px; color: black;">Supprimer</button>
+                        <button (click)="open(content)" style="background-color:red; margin-left: 10px; border-radius: 20px; color: black;">Supprimer</button>
                     </td>
+                    <ng-template #content let-modal>
+                      <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">Supprimer unite </h4>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="firstname">Vous etes sur de supprimer cette unite?</label>
+                            <div class="input-group">
+                              <input id="firstname" class="form-control" >
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark" (click)="deleteunite(unite.id_U)" (click)="modal.close('Save click')">Supprimer</button>
+                        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Annuler</button>
+                      </div>
+                    </ng-template>
                 </tr>
               
                     

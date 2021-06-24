@@ -22,11 +22,6 @@ export class CreateFemmeComponent implements OnInit {
   femmes$: Observable<Femme[]>
   gouvernorats:Observable<Gouvernorat[]>;
 
-
- 
- 
-  
-  
   femme: Femme = new Femme();
   gouvernorat: Gouvernorat = new Gouvernorat;
   
